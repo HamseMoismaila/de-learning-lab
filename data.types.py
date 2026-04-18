@@ -192,13 +192,315 @@
 ## String in Python
 
 
-name =  input("Enter your name here: ")
+# name =  input("Enter your name here: ")
 
-result = len(name)
-result1 = name.rfind("h")
+# result = len(name)
+# result1 = name.rfind("h")
 
-print(result)
-print(result1)
+# print(result)
+# print(result1)
 
+
+# all about string in python 
+
+# 
+
+
+# Variables & Data Types
+
+
+
+
+
+
+
+
+
+########################################################################
+
+# """
+# ========================================
+# 📦 PYTHON DATA TYPES (DATA ENGINEERING)
+# ========================================
+# """
+
+# # Basic data types
+# user_id = 101            # int
+# price = 9.99            # float
+# name = "hamze"          # str
+# is_active = True        # bool
+# missing_value = None    # None (similar to NULL in SQL)
+
+
+# """
+# ========================================
+# 🔍 TYPE CHECKING (VALIDATION)
+# ========================================
+# """
+
+# # Always validate types before processing data
+# value = 100
+# print(type(value))
+
+# # WHY?
+# # Prevent pipeline errors when handling messy data
+
+
+# """
+# ========================================
+# 🔄 TYPE CONVERSION (VERY IMPORTANT)
+# ========================================
+# """
+
+# # Example: Data from CSV / API
+# row = {
+#     "name": "hamse",
+#     "age": 25,
+#     "salary": "3000.50"   # string (common in CSV)
+# }
+
+# # Convert before using
+# age = int(row["age"])
+# salary = float(row["salary"])
+
+# for key, value in row.items():
+#     print(key, value)
+
+# # NOTE:
+# # CSV → everything is STRING → must convert before analysis
+
+
+# """
+# ========================================
+# ➕ OPERATORS (DATA TRANSFORMATION)
+# ========================================
+# """
+
+# price = 99.99
+# tax = 0.3
+
+# final_price = price + (price * tax)
+
+# print(f"The price after tax is {final_price}")
+
+# # Use cases:
+# # - Feature engineering
+# # - Aggregations
+# # - Calculated fields
+
+
+# """
+# ========================================
+# 🔁 FILTERING DATA (LIST COMPREHENSION)
+# ========================================
+# """
+
+# users = [
+#     {"name": "Ali", "age": 17},
+#     {"name": "Sara", "age": 22}
+# ]
+
+# # Get adults
+# adults = [u for u in users if u["age"] > 18]
+# print(adults)
+
+# # Get only names
+# names = [u["name"] for u in users if u["age"] > 18]
+# print(names)
+
+# # Equivalent (classic loop)
+# adult = []
+# for u in users:
+#     if u["age"] > 18:
+#         adult.append(u)
+
+# print(adult)
+
+
+# """
+# ========================================
+# 🧠 BOOLEAN LOGIC (DATA CLEANING RULES)
+# ========================================
+# """
+
+# # Validate realistic ages
+# for u in users:
+#     if u["age"] > 0 and u["age"] < 120:
+#         print("Valid age:", u["age"])
+
+# # Best practice (safe validation)
+# valid_users = [
+#     u for u in users
+#     if "age" in u and isinstance(u["age"], int) and 0 < u["age"] < 120
+# ]
+
+# print(valid_users)
+
+# # Use cases:
+# # - Data validation rules
+# # - Filtering bad records
+
+
+# """
+# ========================================
+# 🧾 F-STRINGS (LOGGING & DEBUGGING)
+# ========================================
+# """
+
+# user_id = 102
+# print(f"Processing user {user_id}")
+
+# # Use cases:
+# # - Logs
+# # - Debug messages
+# # - Dynamic file paths
+
+
+# """
+# ========================================
+# 🧹 STRING METHODS (DATA CLEANING)
+# ========================================
+# """
+
+# # Uppercase
+# country = "malaysia"
+# print(country.upper())
+
+# # Remove whitespace
+# name = " Hamse  "
+# print(name.strip())
+
+# # Split raw data (CSV-like)
+# line = "Ali, 25, Engineer"
+# data = line.split(",")
+# print(data)
+
+# # Fix dirty data
+# text = "RM100"
+# clean = text.replace("RM", "")
+# print(clean)
+
+# # Old formatting
+# file_name = "data_{}.csv".format(2026)
+# print(file_name)
+
+# # Modern (recommended)
+# file_name1 = f"data_{2026}.csv"
+# print(file_name1)
+
+
+
+
+
+
+
+# Mini Data Pipeline 
+
+
+# row_data = [
+#     "Ali,25,RM3000",
+#     "Sara, 30 ,RM4000",
+#     "John,17,RM2000"
+# ]
+
+# clean_data = []
+
+# for row in row_data:
+#     name, age, salary = row.split(",")
+
+#     name = name.strip().upper()
+#     age = int(age.strip())
+#     salary = float(salary.replace("RM", " ").strip())
+
+#     if age > 18:
+#         clean_data.append({
+#             "name" : name,
+#             "age" : age,
+#             "salary" : salary
+#         })
+# print(clean_data)
+
+
+
+
+
+transactions = [
+    " 1001 , Ali , RM250.50 , success ",
+    "1002,Sara,RM300.00,FAILED",
+    "1003 , John , RM-50 , success",
+    "1004, Aisha , RM400 , success ",
+    "1005, , RM500 , success",
+    "1006, Mike, RMabc , success"
+]
+
+clean_data = []
+
+
+
+for tran in transactions:
+    id, name, amount, status = tran.split(",")
+    
+    id = int(id.strip())
+    name = name.strip().upper()
+    amount = amount.replace("RM", " ").strip()
+    status = status.strip().lower()
+
+
+    if status == "success":
+        clean_data.append(
+            {
+                id : "id",
+                name : "name", 
+                amount : "amount", 
+                status : "status"
+
+            }
+        )
+print(clean_data)
+
+
+
+# the answer from chatgpt 
+
+transactions = [
+    " 1001 , Ali , RM250.50 , success ",
+    "1002,Sara,RM300.00,FAILED",
+    "1003 , John , RM-50 , success",
+    "1004, Aisha , RM400 , success ",
+    "1005, , RM500 , success",
+    "1006, Mike, RMabc , success"
+]
+
+clean_data = []
+
+for tran in transactions:
+    try:
+        id, name, amount, status = tran.split(",")
+
+        id = int(id.strip())
+        name = name.strip().upper()
+        status = status.strip().lower()
+
+        # clean amount
+        amount = amount.replace("RM", "").strip()
+        amount = float(amount)
+
+        # filters (REAL DE logic)
+        if (
+            status == "success"
+            and name != ""
+            and amount > 0
+        ):
+            clean_data.append({
+                "id": id,
+                "name": name,
+                "amount": amount,
+                "status": status
+            })
+
+    except:
+        continue  # skip bad rows (RMabc, missing data, etc.)
+
+print(clean_data)
 
 
