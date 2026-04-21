@@ -317,6 +317,113 @@
 # print(adult)
 
 
+# users = [
+#     {"name": "Ali", "age": 17},
+#     {"name": "Sara", "age": 22},
+#     {"name": "John", "age": 19}
+# ]
+
+
+# # young = [u for u in users if u["age"] < 20]
+
+# # print(young)
+
+
+# # younger = []
+
+# # for u in users:
+# #     if u["age"] < 20:
+# #        younger.append(u)
+
+# # print(younger)
+
+
+# count = 0
+
+# for u in users:
+#     if u["age"] >= 18:
+#         count = count + 1
+
+# print(count)  
+
+# products = [
+#     {"name": "Laptop", "price": 3000},
+#     {"name": "Mouse", "price": 50},
+#     {"name": "Keyboard", "price": 150}
+# ]
+
+
+
+# less_200 = [u for u in products if u["price"] < 200]
+
+# print(less_200)
+
+# sum = 0
+
+# for u in products:
+#     sum = sum + u["price"]
+
+# print(sum)
+
+
+
+# transactions = [
+#     {"user": "Ali", "amount": "RM200"},
+#     {"user": "Sara", "amount": "RM150"},
+#     {"user": "John", "amount": "RM300"}
+# ]
+
+
+# for tran in transactions:
+
+#        user = tran["user"]
+#        amount = tran["amount"]
+
+#        amount = amount.replace("RM","")
+
+#        print(user, amount)
+
+
+
+
+users = [
+    {"name": "Ali", "age": 17, "active": True},
+    {"name": "Sara", "age": 22, "active": False},
+    {"name": "John", "age": 25, "active": True}
+]
+
+
+# get names of users who are active and older than 18
+
+
+# young_active = [ u["name"] for u in users if u["age"] > 18 and u["active"] == True]
+
+
+# print(young_active)
+
+
+orders = [
+    {"id": 1, "user": "Ali", "amount": 200},
+    {"id": 2, "user": "Sara", "amount": 500},
+    {"id": 3, "user": "Ali", "amount": 300}
+]
+
+result = {}
+
+
+for order in orders:
+    user = order["user"]
+    amount = order["amount"]
+
+    print(user, order)
+
+
+
+
+
+
+
+
 # """
 # ========================================
 # 🧠 BOOLEAN LOGIC (DATA CLEANING RULES)
@@ -424,83 +531,99 @@
 
 
 
-transactions = [
-    " 1001 , Ali , RM250.50 , success ",
-    "1002,Sara,RM300.00,FAILED",
-    "1003 , John , RM-50 , success",
-    "1004, Aisha , RM400 , success ",
-    "1005, , RM500 , success",
-    "1006, Mike, RMabc , success"
-]
+# transactions = [
+#     " 1001 , Ali , RM250.50 , success ",
+#     "1002,Sara,RM300.00,FAILED",
+#     "1003 , John , RM-50 , success",
+#     "1004, Aisha , RM400 , success ",
+#     "1005, , RM500 , success",
+#     "1006, Mike, RMabc , success"
+# ]
 
-clean_data = []
+# clean_data = []
 
 
 
-for tran in transactions:
-    id, name, amount, status = tran.split(",")
+# for tran in transactions:
+#     id, name, amount, status = tran.split(",")
     
-    id = int(id.strip())
-    name = name.strip().upper()
-    amount = amount.replace("RM", " ").strip()
-    status = status.strip().lower()
+#     id = int(id.strip())
+#     name = name.strip().upper()
+#     amount = amount.replace("RM", " ").strip()
+#     status = status.strip().lower()
 
 
-    if status == "success":
-        clean_data.append(
-            {
-                id : "id",
-                name : "name", 
-                amount : "amount", 
-                status : "status"
+#     if status == "success":
+#         clean_data.append(
+#             {
+#                 id : "id",
+#                 name : "name", 
+#                 amount : "amount", 
+#                 status : "status"
 
-            }
-        )
-print(clean_data)
+#             }
+#         )
+# print(clean_data)
 
 
 
-# the answer from chatgpt 
+# transactions = [
+#     " 1001 , Ali , RM250.50 , success ",
+#     "1002,Sara,RM300.00,FAILED",
+#     "1003 , John , RM-50 , success",
+#     "1004, Aisha , RM400 , success ",
+#     "1005, , RM500 , success",
+#     "1006, Mike, RMabc , success"
+# ]
 
+# clean_data = []
+
+# for tran in transactions:
+#     try:
+#         id, name, amount, status = tran.split(",")
+
+#         id = int(id.strip())
+#         name = name.strip().upper()
+#         status = status.strip().lower()
+
+#         # clean amount
+#         amount = amount.replace("RM", "").strip()
+#         amount = float(amount)
+
+#         # filters (REAL DE logic)
+#         if (
+#             status == "success"
+#             and name != ""
+#             and amount > 0
+#         ):
+#             clean_data.append({
+#                 "id": id,
+#                 "name": name,
+#                 "amount": amount,
+#                 "status": status
+#             })
+
+#     except:
+#         continue  # skip bad rows (RMabc, missing data, etc.)
+
+# print(clean_data)
+
+
+
+
+
+# Sample data: list of transactions
 transactions = [
-    " 1001 , Ali , RM250.50 , success ",
-    "1002,Sara,RM300.00,FAILED",
-    "1003 , John , RM-50 , success",
-    "1004, Aisha , RM400 , success ",
-    "1005, , RM500 , success",
-    "1006, Mike, RMabc , success"
+    {"user": "Ali", "amount": "RM200"},
+    {"user": "Sara", "amount": "RM150"},
+    {"user": "John", "amount": "RM300"}
 ]
 
-clean_data = []
+total = 0
 
-for tran in transactions:
-    try:
-        id, name, amount, status = tran.split(",")
+for t in transactions:
+    # Extract and clean amount
+    amount = int(t["amount"].replace("RM", ""))
+    total += amount
 
-        id = int(id.strip())
-        name = name.strip().upper()
-        status = status.strip().lower()
-
-        # clean amount
-        amount = amount.replace("RM", "").strip()
-        amount = float(amount)
-
-        # filters (REAL DE logic)
-        if (
-            status == "success"
-            and name != ""
-            and amount > 0
-        ):
-            clean_data.append({
-                "id": id,
-                "name": name,
-                "amount": amount,
-                "status": status
-            })
-
-    except:
-        continue  # skip bad rows (RMabc, missing data, etc.)
-
-print(clean_data)
-
-
+print("Total amount:", total)
