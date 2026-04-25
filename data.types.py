@@ -402,20 +402,20 @@ users = [
 # print(young_active)
 
 
-orders = [
-    {"id": 1, "user": "Ali", "amount": 200},
-    {"id": 2, "user": "Sara", "amount": 500},
-    {"id": 3, "user": "Ali", "amount": 300}
-]
+# orders = [
+#     {"id": 1, "user": "Ali", "amount": 200},
+#     {"id": 2, "user": "Sara", "amount": 500},
+#     {"id": 3, "user": "Ali", "amount": 300}
+# ]
 
-result = {}
+# result = {}
 
 
-for order in orders:
-    user = order["user"]
-    amount = order["amount"]
+# for order in orders:
+#     user = order["user"]
+#     amount = order["amount"]
 
-    print(user, order)
+#     print(user, order)
 
 
 
@@ -529,101 +529,42 @@ for order in orders:
 
 
 
-
-
-# transactions = [
-#     " 1001 , Ali , RM250.50 , success ",
-#     "1002,Sara,RM300.00,FAILED",
-#     "1003 , John , RM-50 , success",
-#     "1004, Aisha , RM400 , success ",
-#     "1005, , RM500 , success",
-#     "1006, Mike, RMabc , success"
-# ]
-
-# clean_data = []
-
-
-
-# for tran in transactions:
-#     id, name, amount, status = tran.split(",")
-    
-#     id = int(id.strip())
-#     name = name.strip().upper()
-#     amount = amount.replace("RM", " ").strip()
-#     status = status.strip().lower()
-
-
-#     if status == "success":
-#         clean_data.append(
-#             {
-#                 id : "id",
-#                 name : "name", 
-#                 amount : "amount", 
-#                 status : "status"
-
-#             }
-#         )
-# print(clean_data)
-
-
-
-# transactions = [
-#     " 1001 , Ali , RM250.50 , success ",
-#     "1002,Sara,RM300.00,FAILED",
-#     "1003 , John , RM-50 , success",
-#     "1004, Aisha , RM400 , success ",
-#     "1005, , RM500 , success",
-#     "1006, Mike, RMabc , success"
-# ]
-
-# clean_data = []
-
-# for tran in transactions:
-#     try:
-#         id, name, amount, status = tran.split(",")
-
-#         id = int(id.strip())
-#         name = name.strip().upper()
-#         status = status.strip().lower()
-
-#         # clean amount
-#         amount = amount.replace("RM", "").strip()
-#         amount = float(amount)
-
-#         # filters (REAL DE logic)
-#         if (
-#             status == "success"
-#             and name != ""
-#             and amount > 0
-#         ):
-#             clean_data.append({
-#                 "id": id,
-#                 "name": name,
-#                 "amount": amount,
-#                 "status": status
-#             })
-
-#     except:
-#         continue  # skip bad rows (RMabc, missing data, etc.)
-
-# print(clean_data)
-
-
-
-
-
-# Sample data: list of transactions
 transactions = [
-    {"user": "Ali", "amount": "RM200"},
-    {"user": "Sara", "amount": "RM150"},
-    {"user": "John", "amount": "RM300"}
+    " 1001 , Ali , RM250.50 , success ",
+    "1002,Sara,RM300.00,FAILED",
+    "1003 , John , RM-50 , success",
+    "1004, Aisha , RM400 , success ",
+    "1005, , RM500 , success",
+    "1006, Mike, RMabc , success"
 ]
 
-total = 0
+clean_data = []
 
-for t in transactions:
-    # Extract and clean amount
-    amount = int(t["amount"].replace("RM", ""))
-    total += amount
+for tran in transactions:
+    try:
+        parts = tran.split(",")
 
-print("Total amount:", total)
+        id = int(parts[0].strip())
+        name = parts[1].strip().upper()
+        amount_str = parts[2].strip()
+        status = parts[3].strip().lower()
+
+        # remove RM
+        amount_str = amount_str.replace("RM", "")
+
+        # convert safely
+        amount = float(amount_str)
+
+        # validation
+        if status == "success" and name != "" and amount > 0:
+            clean_data.append({
+                "id": id,
+                "name": name,
+                "amount": amount,
+                "status": status
+            })
+
+    except ValueError:
+        continue
+
+print(clean_data)
