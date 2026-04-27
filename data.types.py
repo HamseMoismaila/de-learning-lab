@@ -529,42 +529,58 @@ users = [
 
 
 
-transactions = [
-    " 1001 , Ali , RM250.50 , success ",
-    "1002,Sara,RM300.00,FAILED",
-    "1003 , John , RM-50 , success",
-    "1004, Aisha , RM400 , success ",
-    "1005, , RM500 , success",
-    "1006, Mike, RMabc , success"
-]
+# transactions = [
+#     " 1001 , Ali , RM250.50 , success ",
+#     "1002,Sara,RM300.00,FAILED",
+#     "1003 , John , RM-50 , success",
+#     "1004, Aisha , RM400 , success ",
+#     "1005, , RM500 , success",
+#     "1006, Mike, RMabc , success"
+# ]
 
-clean_data = []
+# clean_data = []
 
-for tran in transactions:
-    try:
-        parts = tran.split(",")
+# for tran in transactions:
+#     try:
+#         parts = tran.split(",")
 
-        id = int(parts[0].strip())
-        name = parts[1].strip().upper()
-        amount_str = parts[2].strip()
-        status = parts[3].strip().lower()
+#         id = int(parts[0].strip())
+#         name = parts[1].strip().upper()
+#         amount_str = parts[2].strip()
+#         status = parts[3].strip().lower()
 
-        # remove RM
-        amount_str = amount_str.replace("RM", "")
+#         # remove RM
+#         amount_str = amount_str.replace("RM", "")
 
-        # convert safely
-        amount = float(amount_str)
+#         # convert safely
+#         amount = float(amount_str)
 
-        # validation
-        if status == "success" and name != "" and amount > 0:
-            clean_data.append({
-                "id": id,
-                "name": name,
-                "amount": amount,
-                "status": status
-            })
+#         # validation
+#         if status == "success" and name != "" and amount > 0:
+#             clean_data.append({
+#                 "id": id,
+#                 "name": name,
+#                 "amount": amount,
+#                 "status": status
+#             })
 
-    except ValueError:
-        continue
+#     except ValueError:
+#         continue
 
-print(clean_data)
+# print(clean_data)
+
+
+
+
+
+
+
+
+
+
+#####
+
+
+
+# Thursday Apr 17 — Functions, Loops & Control Flow
+
