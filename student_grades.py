@@ -13,21 +13,19 @@ students = {
 }
 
 
+def class_average(students):
+    if not students:
+        raise ValueError("No student provided")
 
-def class_average(students) :
-    if not students: 
-        raise ValueError("No ostudent provided")
-    
     return sum(students.values()) / len(students)
 
 
 def top_3(students):
-    sorted_student = sorted(students.items(), key=lambda x: x[1], reverse=True)
-    return sorted_student[:3]
+    return sorted(students.items(), key=lambda x: x[1], reverse=True)[:3]
 
 
-def fail_list(students):
-    return [name for  name, score in students.items() if score < 50]
+def get_failed_students(students):
+    return [name for name, score in students.items() if score < 50]
 
 
 def grade_distribution(students):
@@ -49,23 +47,11 @@ def grade_distribution(students):
 
 
 def normalize_scores(students):
+    if not students:
+        raise ValueError("No student provided")
+
     max_score = max(students.values())
     return {name: round(score / max_score * 100, 2) for name, score in students.items()}
-
-
-
-
-
-data =  [10, 20, 30 ]
-
-max_val = max(data)
-
-normalized = [ round(x / max_val, 2) for x in data]
-
-
-
-print(normalized)
-
 
 
 
