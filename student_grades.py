@@ -60,36 +60,56 @@ def normalize_scores(students):
 
 
 
-# goals = {
-#     "Ronaldo" : 234, 
-#     "Messi" : 700, 
-#     "Lewandowski" : 590
-# }
+goals = {
+    "Ronaldo" : 234, 
+    "Messi" : 700, 
+    "Lewandowski" : 590
+}
 
 
 
 
 
-# def all_time_goal_scorer(goals):
-#     sorted_player = sorted(goals.items(), key= lambda x: x[1], reverse=True )
-#     return sorted_player[:3]
+def all_time_goal_scorer(goals):
+    sorted_player = sorted(goals.items(), key= lambda x: x[1], reverse=True )
+    return sorted_player[:3]
 
-# print(all_time_goal_scorer(goals))
-
-
-# def all_time_goal_scorer(goals):
-#     top = []
-
-#     for player, goals in goals.items():
-#         top.append((player, goals))
-#         top.sort(key=lambda x: x[1], reverse=True)
-
-#     return top[:3]
-
-# print(all_time_goal_scorer(goals))
+print(all_time_goal_scorer(goals))
 
 
+def all_time_goal_scorer(goals):
+    top = []
 
+    for player, goals in goals.items():
+        top.append((player, goals))
+        top.sort(key=lambda x: x[1], reverse=True)
+
+    return top[:3]
+
+print(all_time_goal_scorer(goals))
+
+
+def all_time_goal_scorer(goals):
+    top = []
+
+    for player, goals in goals.items():
+        top.append((player, goals))
+
+    top.sort(key=lambda x: x[1], reverse=True)
+    return top[:3]
+
+print(all_time_goal_scorer(goals))
+
+def all_time_goal_scorer(goals):
+    top = []
+
+    for player, goals in goals.items():
+        top.append((player, goals))
+
+    top.sort(key=lambda x: x[1], reverse=True)
+    return top[:3]
+
+print(all_time_goal_scorer(goals))
 
 
 
