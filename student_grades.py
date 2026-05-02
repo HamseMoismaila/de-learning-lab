@@ -77,43 +77,5 @@ def all_time_goal_scorer(goals):
 print(all_time_goal_scorer(goals))
 
 
-def all_time_goal_scorer(goals):
-    top = []
-
-    for player, goals in goals.items():
-        top.append((player, goals))
-        top.sort(key=lambda x: x[1], reverse=True)
-
-    return top[:3]
-
-print(all_time_goal_scorer(goals))
-
-
-def all_time_goal_scorer(goals):
-    top = []
-
-    for player, goals in goals.items():
-        top.append((player, goals))
-
-    top.sort(key=lambda x: x[1], reverse=True)
-    return top[:3]
-
-print(all_time_goal_scorer(goals))
-
-def all_time_goal_scorer(goals):
-    top = []
-
-    for player, goals in goals.items():
-        top.append((player, goals))
-
-    top.sort(key=lambda x: x[1], reverse=True)
-    return top[:3]
-
-print(all_time_goal_scorer(goals))
-
-
-
-
-
 
 
