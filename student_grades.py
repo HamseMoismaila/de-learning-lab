@@ -56,16 +56,22 @@ def normalize_scores(students):
 
 
 
-try:
-    if __name__ == "__main__":
+
+
+
+
+def main():
+    try:
+     if __name__ == "__main__":
         print("Class Average:", class_average(students))
         print("Top 3 Students:", top_3(students))
         print("Failed Students:", get_failed_students(students))
         print("Grade Distribution:", grade_distribution(students))
         print("Normalized Scores:", normalize_scores(students))
 
-except ValueError as e:
-    print(e)
+    except ValueError as e:
+     print(e)
+
 
 
 
